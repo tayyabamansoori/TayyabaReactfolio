@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+html {
+  @apply bg-black text-black dark:bg-black dark:text-white;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .hover-underline-animation {
+    @apply relative inline-block;
+  }
+  .hover-underline-animation::after {
+    @apply content-[''] bg-black absolute w-full scale-x-0 h-0.5 bottom-0 left-0 origin-bottom-right transition-transform duration-300 ease-out;
+  }
+  .hover-underline-animation:hover::after {
+    @apply origin-bottom-left scale-x-100;
+  }
+}
+
